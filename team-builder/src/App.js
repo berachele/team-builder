@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {v4 as uuid} from 'uuid';
+import Form from "./childFolder/Form"
+
+//set up inital team for testing
+const initialTeam = [
+  {id: uuid(), first: 'Austin', last: 'Lynes'},
+]
 
 function App() {
+  //set up a state property for your team members list
+  const [teams, setTeams] = useState(initialTeam)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>Team Austin</h1>
+     <h3>Meet your team:</h3>
+     {
+     teams.map(team =>
+       <div key={team.id}>{team.first} {team.last}</div>)
+     }
     </div>
   );
 }
