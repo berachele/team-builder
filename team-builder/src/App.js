@@ -36,7 +36,7 @@ function App() {
     event.preventDefault()
 
     const newTeam = {
-      // id: uuid(),
+      id: uuid(),
       first: formValues.first,
       last: formValues.last,
       role: formValues.role,
@@ -58,11 +58,11 @@ function App() {
       }
       <br/><br/>
       <h4>Add a New Member:</h4>
-      <Form>
+      <Form
         makeChange={makeChange}
         formValues={formValues}
         submitForm={submitForm}
-      </Form>
+      />
     </div>
   );
 }
