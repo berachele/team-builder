@@ -22,6 +22,33 @@ function App() {
     email: '',
   })
 
+  const makeChange = event => {
+    const changedInput = event.target.name
+    const newValue = event.target.value
+
+    setFormValues({
+      ...formValues, 
+      [changedInput]: newValue,
+    })
+  }
+
+  const submitForm = event => {
+    event.preventDefault()
+
+    const newTeam = {
+      // id: uuid(),
+      first: formValues.first,
+      last: formValues.last,
+      role: formValues.role,
+      email: formValues.email
+    }
+    setTeams([ ...teams, newTeam ])
+  }
+  // Render your Form component in App and pass a setter method 
+  //(the set_____ method from your team members state in App) 
+  //down to it so you can add team members to your state.
+
+
   return (
     <div className="App">
       <h1>Team Austin</h1>
@@ -32,8 +59,9 @@ function App() {
       <br/><br/>
       <h4>Add a New Member:</h4>
       <Form>
-        
+        makeChange={makeChange}
         formValues={formValues}
+        submitForm={submitForm}
       </Form>
     </div>
   );
